@@ -10,16 +10,18 @@
         <a-text position="-3 2 -5" value="${decodeURIComponent(getQueryVariable("title"))}" color="#FFFFFF" font="https://cdn.aframe.io/fonts/Exo2Bold.fnt"></a-text>
 
         <script>
-            function getQueryVariable(variable) {
-                const query = decodeURIComponent(window.location.search.substring(1));
-                const vars = query.split("&");
-                for (let i = 0; i < vars.length; i++) {
-                    const pair = vars[i].split("=");
-                    if (pair[0] === variable) {
-                        return pair[1];
+            if (typeof window !== 'undefined') {
+                function getQueryVariable(variable) {
+                    const query = decodeURIComponent(window.location.search.substring(1));
+                    const vars = query.split("&");
+                    for (let i = 0; i < vars.length; i++) {
+                        const pair = vars[i].split("=");
+                        if (pair[0] === variable) {
+                            return pair[1];
+                        }
                     }
+                    return "";
                 }
-                return "";
             }
         </script>
     </a-scene>
